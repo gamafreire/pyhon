@@ -36,7 +36,7 @@ Ct=[(Ct[i]*(1+erro* np.random.random()))for i in range(len(Ct))]
 ##    Representar os pontos experimentais
 ##
 fig=plt.figure(figsize=(5.5,5))
-plt.title(u'ODE     $\\frac{dC}{dt}=b\\cdot C^c$ com $C(0)=a$')
+plt.title(u'ODE     $\\frac{dC(t)}{dt}=b\\cdot C^c$ com $C(0)=a$')
 plt.ylabel('$[M]$')
 plt.xlabel('t (s)')
 plt.plot(t,Ct,'r.', label='$C(t)_{exp}$')
