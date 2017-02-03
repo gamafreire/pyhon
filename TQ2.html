@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Temperatura I</title>
+    <script src="https://sagecell.sagemath.org/static/jquery.min.js"></script>
+    <script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script>
+	<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+	<script src='https://rawgithub.com/jasongrout/ipywidgets/master/widgets.js'></script>
+    <script>
+$(function () {
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+    						template:       sagecell.templates.minimal,
+                           evalButtonText: 'Experimente agora'});
+});
+    </script>
+
+<link rel="stylesheet" type="text/css" href="OINTRO.css">
+
+</head>
+
+<body>
+<script>	document.body.style.background = "rgb(247, 251, 254) url('virtualtt.jpg') no-repeat center top";
+</script>
+
+
+  <h1><center>Temperatura de um Tanque - I</center></h1>
+<p>Baseado em <a href="https://sagecell.sagemath.org/" target="_top">The Sage Single-Cell Server</a><br>
+An Interactive Applet powered by Sage and MathJax.</p>
+<p><h5>(PAX. IST-UL <i>Filipe Gama Freire</i>)</h5></p>
+
+<hr>
+
+<h2>Sumário</h2>
+<p>Consegue regular a temperatura do seu banho? Sem se queimar veja como se regula a temperatura de um banho de chuveiro.</p>
+<p>Um tanque perfeitamente agitado de volume constante é alimentado por duas correntes de um mesmo líquido. Se variarem as temperaturas, $T_1\ e\ T_2$ ou os caudais, $m_1\ e\ m_2$ de cada uma das correntes. Como variará a temperatura de saída do tanque $T_3$, a temperatura do seu banho?</p>
+
+<table style="margin-left: 120px;" border="0">
+<tbody>
+<tr>
+<td style="text-align: center;"></td>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td style="text-align: center;"><span style="font-size: small;"><img style="vertical-align: middle; border: 0; margin: 0px;" src="http://virtualabs.ist.utl.pt/virtual/T3.png" alt="teste" width="200" height="150" /></span>
+</tr>
+<tr>
+<td>Volume constante $\quad \Rightarrow$</td>
+<td style="text-align: center;">$\frac{d\ \rho V}{dt}=0$</td>
+<td>$\Rightarrow \quad m_3 = m_1 + m_2$</td>
+</tr>
+</tbody>
+</table>
+<h2>Introdução</h2>
+<p>O sistema atendendo à definição, vai ter altura de líquido constante.</p>
+<p> A temperatura do tanque e por isso a da corrente de saída uma vez que há agitação perfeita, $T_3$, vai variar de acordo com</p>
+\[C_p\frac{d[\rho V(T_3-T_{ref})]}{dt}=m_1C_p(T_1-T_{ref})+m_2C_p(T_2-T_{ref})-m_3C_p(T_3-T_{ref})]\]
+<p>Cancelando as constantes do sistema</p>
+\[\rho V\frac{dT_3}{dt}=m_1T_1+m_2T_2-m_3T_3\]
+<h2>Instruções</h2>
+<p>Carregue no botão abaixo (Experimente agora) e altere os 'slider' à sua vontade e observe a variação da temperatura do tanque em função do tempo.</p>
+
+<div class="compute">
+<script type="text/x-sage">
+#load('https://rawgithub.com/jasongrout/ipywidgets/master/widgets.py')
+from IPython.html import widgets
+from ipywidgets import interact, FloatSlider;
+pretty_print('kc é o ganho do controlador')
+t,s=var('t s')
+A=2
+tanque=plot(t/A,t,0,6,color='black',legend_label='tanque')
+@interact
+def Prop(kc=FloatSlider(min=-1, max=1, step=0.1)):
+    kc=int(kc*100+0.5)/100.0.n(9)
+    H=inverse_laplace(1/(s*(A*s-kc)),s,t)
+    pretty_print('h=',H);
+    P=plot(H,t,0,6, thickness=2, legend_label='$k_c$='+str(kc), ymax=2)
+    P.set_legend_options(loc=(1,0.4));
+    show(P+tanque,figsize=3,gridlines=True,axes_labels=('t [min.]',"h' [m]"),fontsize=6)
+</script>
+</div>
+<p></p>	
+	
+
+<h2>Discussão</h2>
+
+<p>Com este 'laboratório' observa-se que:
+	<ul>
+	<li>o sistema em cadeia aberta tende para um <a href='http://www2.peq.coppe.ufrj.br/Pessoal/Professores/Arge/COQ790/COQ790_Aula_1.pdf'>estado estacionário</a>.</li>
+	<li>o sistema tem uma resposta de 1ª ordem (<a href='http://users.isr.ist.utl.pt/~aguiar/respostas%20no%20tempo.pdf'> uma constante de tempo</a>).</li>
+</ul></p>	
+
+<h3>Sistema regulado</h3>
+<p>A temperatura do banho é medida por um termopar. No controlador, TC, há a comparação dessa temperatura com a desejada, set-point SP. Se estiver muito alta, o controlador manda fechar mais um bocado o caudal de água quente, caso contrário, se a água do banho estiver fria, manda abrir mais um pouco a água quente.</p>
+<p>Se o controlador actuar de modo proporcional ao desvio, erro $\epsilon=(Sp-T_3)$, isto é </p>
+\[m_3=k_c\epsilon\]
+<p>O controlador diz-se proporcional</p>
+<p>Se quiser confirmar valores, leve em conta que $\rho\ V$ = 10,0 kg .</p>
+	<table style="margin-left: 120px;" border="0">
+	<tbody>
+	<tr>
+	<td>
+	<p style="text-align: center; margin-left: 120px;"><span style="font-size: small;"></span></p>
+	<p style="text-align: center; margin-left: 120px;"><span style="font-size: small;"></span></p>
+	</td>
+	<td style="text-align: center;"><span style="font-size: small;"><img style="vertical-align: middle; border: 0; margin: 0px;" src="http://virtualabs.ist.utl.pt/virtual/t33.png" alt="teste" width="200" height="150" /></span></td>
+	</tr>
+	</tbody>
+	</table>
+<h2>Instruções</h2>
+<p>Estude a dinâmica do sistema, observando a variação da temperatura do banho ao variar o caudal da corrente de água fria.</p>
+<p>Notar que no gráfico as ordenadas são ºC como em kg/min (kg/min) tal como indicado.</p>
+<p>Estude a influ&ecirc;ncia de $k_c$ na resposta do sistema.</p>
+<p>Com o controlador afinado ($k_c>0.3$), observe como a variação do caudal de água fria influencia a temperatura do banho.</p>
+<div class="compute">
+<script type="text/x-sage">
+rV=10.
+T2=80.
+T1=20.
+
+def dT3(m1,T3):
+    return (m1*T1+m2[0]*T2-(m1+m2[0])*T3)/rV
+tf=2.
+dt=0.01
+T3=[0..int(tf/dt)]
+m2=[0..int(tf/dt)]
+T3[0]=20.
+SP=40.
+@interact
+def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),\
+controlo = ['Off','On'],\
+kc=slider(0.1,5.0.n(12),0.1.n(12),1.0,label='$k_c$' ),):
+    m2[0]=9.7
+   
+    i=0
+    for t in srange(0,tf,dt):
+         if controlo=='Off':
+             T3[i+1]=T3[i]+dT3(m1,T3[i])*dt
+             m2[i+1]=m2[i]
+         else:
+             m2[i+1]=kc*(SP-T3[i])
+             if m2[i+1]>=20.:m2[i+1]=20.
+             T3[i+1]=T3[i]+(m1*T1+m2[i]*T2-(m1+m2[i])*T3[i])/rV*dt
+         i+=1
+    poi=line([(0,SP),(tf,SP)],color='black',linestyle='--',legend_label='$SP\ ^oC$',fontsize=6)
+    poi+=list_plot(zip(srange(0,tf,dt),T3), axes_labels=('t [min.]',u"[ºC] , kg/min"),\
+plotjoined=True,figsize=3, ymin=0, ymax=50,thickness=2,gridlines=True,legend_label=u'$T_3\ ^oC$',fontsize=6)   
+    poi+=list_plot(zip(srange(0,tf,dt),[i for i in m2]),plotjoined=True,color='red',\
+legend_label=u'$m_2\ kg/min,\ 80^oC$')
+    poi+=list_plot(zip(srange(0,tf,dt),[m1 for i in m2]),plotjoined=True,color='green',\
+legend_label=u'$m_1\ kg/min,\ 20^oC$')
+    poi.set_legend_options(loc=(-1.2,0.4));
+    show(poi)
+</script>
+</div>
+<p></p>
+
+
+<h2>Discussão</h2>
+
+<p>Com este 'laboratório' observa-se que:
+	<ul>
+<li>o sistema em cadeia aberta tende para um estado estacionário.</li>
+<li>por acaso o sistema em cadeia aberta pode estabilizar no set-point para a corrente de água fria toda aberta ($m_1$), mas quando se diminui um pouco esse caudal, a temperatura do tanque ultrapassa rapidamente o set-point.</li>
+<li>em cadeia fechada trata-se de um sistema de 1ª ordem com um controlador proporcional.</li>
+	<li>para um $k_c$ suficientemente alto a controlada passa quase a ser independente do caudal de água fria (perturbada) e toma valores perto do set-point, erros baixos e tanto menores quanto maior o ganho do controlador, $k_c$.
+	<li>a vantagem do controlo é evidente uma vez que as perturbações são rapidamente compensadas pela manipulada ($m_2$) nunca queimando o utilizador.</li>
+	<li>no início, $t\simeq 0$, o tanque está tão frio que o controlador abre a corrente de água quente ao máximo ($m_2$, linha vermelha). Notar que se limitou esse valor a 20 kg/min.</li>
+</ul></p>
+
+
+<hr>
+<h2>Bibliografia</h2>
+
+<p>"Process dynamics and control 2nd. ed.", Dale E. Seborg, Thomas F. Edgar, Duncan A. Mellichamp, (2004) Wiley.
+<hr>
+<p><a href="http://virtualabs.ist.utl.pt/virtual/"> Voltar à entrada</a></p>
+
+<hr>                        
+</body>
+</html>
