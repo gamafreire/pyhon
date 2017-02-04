@@ -1,6 +1,7 @@
 # INSTRUÇÕES
 
- python fig_2.py                                                                                      1 ↵
+python fig_2.py                                                                                      1 ↵
+<img src="fig.png" alt="Ajuste" title="Resultado" />
 ############################################
 ############################################
              Co            k            n        %erro
