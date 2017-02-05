@@ -8,12 +8,9 @@ Existem dois tipos de scripts:
 - SageCell
 
       - Estes scripts são páginas de HTML interactivas e constituem os [VIRTUAis LABoratoriaiS](http://freire.ist.utl.pt/virtual/)
-      
       - Nestes deve carregar nos links:
-      
-        -[TQ2](http://gamafreire.github.io/CSTR/TQ2.html).
-        
-        -
+      -[TQ2](http://gamafreire.github.io/CSTR/TQ2.html).
+      -
         
         
 - python
