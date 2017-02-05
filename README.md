@@ -1,20 +1,24 @@
 ## Synopsis
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+Pequenos scripts em python com o propósito de ensinar Engenharia Química, nomeadamente reactores e dinâmica de sistemas e controlo de processos.
 
 ## Code Example
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+Existem dois tipos de scropts:
+> 1 - SageCell
+> 2 - python
 
 ## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+Ensinar.
 
 ## Installation
 
+Ex:
 python fig_2.py
 
 ## Resultados
+> 1- fig_2.py
 
 <img src="fig.png" alt="Ajuste" title="Resultado" />
 ############################################
@@ -25,6 +29,7 @@ python fig_2.py
  
     Obtidos  1.0668       -0.651       2.7603        r=0.9833
 
+> 2- em breve
 
 ## API Reference
 
