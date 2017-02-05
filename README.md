@@ -6,8 +6,10 @@ Pequenos scripts em python com o propósito de ensinar Engenharia Química, nome
 
 Existem dois tipos de scripts:
 - SageCell
-      - Nestes deve carregar no link [TQ2](http://gamafreire.github.io/CSTR/TQ2.html).
+      - Estes scripts são páginas de HTML interactivas e constituem os [VIRTUAis LABoratoriaiS](http://freire.ist.utl.pt/virtaul/)
+      - Nestes deve carregar no link [TQ2](http://gamafreire.github.io/CSTR/TQ2.html).
 - python
+      - Deve copiar o ficheiro e executar no seu computador.
 
 ## Motivation
 
