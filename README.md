@@ -4,7 +4,7 @@ Pequenos scripts em python com o propósito de ensinar Engenharia Química, nome
 
 ## Code Example
 
-Existem dois tipos de scropts:
+Existem dois tipos de scripts:
 - SageCell
 - python
 
@@ -18,7 +18,7 @@ Ex:
 python fig_2.py
 
 ## Resultados
-> 1- fig_2.py
+1. fig_2.py
 
 <img src="fig.png" alt="Ajuste" title="Resultado" />
 ############################################
@@ -29,7 +29,7 @@ python fig_2.py
  
     Obtidos  1.0668       -0.651       2.7603        r=0.9833
 
-> 2- em breve
+2. em breve
 
 ## API Reference
 
