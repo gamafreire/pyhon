@@ -37,12 +37,13 @@ Depending on the size of the project, if it is small and simple enough the refer
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
+Experimente no terminal
+  python fig_2.py
 
 ## Contributors
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+Wanted!
 
 ## License
 
-A short snippet describing the license (MIT, Apache, etc.)
+<p class="copyline">© 2017 GitHub Inc. All rights reserved.</p>
