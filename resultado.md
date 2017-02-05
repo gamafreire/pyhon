@@ -1,6 +1,11 @@
-# INSTRUÇÕES
+# CSTR
 
-python fig_2.py                                                                                      1 ↵
+## Instruções
+
+python fig_2.py
+
+## Resultados
+
 <img src="fig.png" alt="Ajuste" title="Resultado" />
 ############################################
 ############################################
