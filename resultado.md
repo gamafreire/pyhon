@@ -1,4 +1,4 @@
-# CSTR
+# fig_2
 
 ## Instruções
 
