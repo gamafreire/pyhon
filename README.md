@@ -5,8 +5,8 @@ Pequenos scripts em python com o propósito de ensinar Engenharia Química, nome
 ## Code Example
 
 Existem dois tipos de scropts:
-> 1 - SageCell
-> 2 - python
+- SageCell
+- python
 
 ## Motivation
 
