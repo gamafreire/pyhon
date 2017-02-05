@@ -12,6 +12,7 @@ Existem dois tipos de scripts:
         
 - python
       - Deve copiar o ficheiro e executar no seu computador.
+      wget http://github.com/gamafreire/CSTR/fig_2.py
 
 ## Motivation
 
