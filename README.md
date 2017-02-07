@@ -11,10 +11,8 @@ Existem dois tipos de scripts:
    - [TQ2](http://gamafreire.github.io/CSTR/TQ2.html).
         
 - python
-      - Deve copiar o ficheiro e executar no seu computador.
+      - Deve copiar o ficheiro e executar no seu computador: 
       
-  wget http://github.com/gamafreire/python/fig_2.py
-  
     python fig_2.py
 
 ## Motivation
